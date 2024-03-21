@@ -56,7 +56,7 @@ def rectangle(start, end):
 
     end_fill()
 
-
+""Hola""
 def triangle(start, end):
     """Draw triangle from start to end."""
     up()
