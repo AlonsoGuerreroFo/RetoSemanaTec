@@ -10,7 +10,7 @@ Exercises
 """
 
 from turtle import *
-
+import math
 from freegames import vector
 
 
@@ -36,10 +36,19 @@ def square(start, end):
     end_fill()
 
 
-def circle(start, end):
+def draw_circle(start, end):
     """Draw circle from start to end."""
-    pass  # TODO
-
+    # Calcula el radio basándose en la distancia euclidiana entre start y end
+    radius = math.sqrt(pow(end.x - start.x, 2) + pow(end.y - start.y, 2))
+    # Levanta el lápiz y mueve a la posición inicial sin dibujar
+    up()
+    # Ajusta la posición para el radio. El -radius ajusta para empezar desde el borde superior del círculo.
+    goto(start.x, start.y - radius)
+    down()  # Baja el lápiz para empezar a dibujar
+    # Comienza a llenar el círculo con el color seleccionado
+    begin_fill()
+    circle(radius)  # Esta llamada a circle dibuja el círculo con el radio calculado
+    end_fill()  # Termina de llenar el círculo
 
 def rectangle(start, end):
     """Draw rectangle from start to end."""
@@ -100,7 +109,7 @@ onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
-onkey(lambda: store('shape', circle), 'c')
+onkey(lambda: store('shape', draw_circle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
