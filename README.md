@@ -1,1 +1,1 @@
-# Codigo original de tron.py
+# Codigo original de paint.py
